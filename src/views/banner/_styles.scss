@@ -114,13 +114,15 @@
     display: grid;
     align-items: center;
     grid-template-rows: 1fr;
-    grid-template-columns: auto auto auto;
-    border: 5px solid rebeccapurple;
+    grid-template-columns: auto auto 1fr;
 
     .text-content {
       width: 25rem;
       height: 100%;
-      border: 5px solid rebeccapurple;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
       .banner {
         cursor: pointer;
         padding: 1rem 2rem;
@@ -135,16 +137,15 @@
         }
       }
       .feature-name {
+        line-height: 1.1;
         font-size: 5rem;
-        hyphens: auto;
         color: var(--brown);
         letter-spacing: .04rem;
         text-transform: capitalize;
-        hyphenate-limit-chars: 6 3 2;
-        border: 5px solid rebeccapurple;
       }
       .feature-caption {
         height: 3.75rem;
+        max-width: 70%;
         line-height: 1.6;
         overflow: hidden;
         font-weight: 400;
@@ -168,7 +169,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 5px solid rebeccapurple;
 
       .image-wrapper {
         position: relative;
@@ -212,7 +212,7 @@
       }
 
       .nav-buttons {
-        left: 36%;
+        left: 34%;
         display: flex;
         margin-top: 2rem;
         position: absolute;
@@ -236,8 +236,12 @@
 
     .featured-category {
       height: 100%;
+      display: flex;
+      padding-left: 3rem;
       color: var(--white);
-      border: 5px solid rebeccapurple;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
 
       .index {
         opacity: .6;
@@ -246,6 +250,7 @@
 
       .label {
         opacity: .9;
+        font-size: 1.3rem;
         line-height: 1.4;
         width: min-content;
         margin-top: 1.25rem;

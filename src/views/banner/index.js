@@ -1,7 +1,7 @@
 import './_styles.scss'
 import React from "react"
 import ribbon from 'images/ribbon.svg'
-import { AppLogo, Image, Link } from "components"
+import { AppLogo, Link } from "components"
 
 export default function Banner({ data = [] }) {
 
@@ -66,8 +66,10 @@ export default function Banner({ data = [] }) {
 
                 <h1
                   className="feature-name"
-                  dangerouslySetInnerHTML={{__html:`${name}`.split(' ').join('<br/>')}}
+                  dangerouslySetInnerHTML={{ __html: `${name}`.split(' ').join('<br/>') }}
                 />
+
+                <div className="feature-caption">{ingredients.join(', ')}</div>
 
                 <Link to='/#menu' className="btn call-to-action" title=''>
                   <span className='btn-text'>More Deals</span>
@@ -84,7 +86,7 @@ export default function Banner({ data = [] }) {
                     <div className="value">${average_price}</div>
                   </div>
 
-                  <div className='hero-image' style={{backgroundImage:`url(${image})`}} />
+                  <div className='hero-image' style={{ backgroundImage: `url(${image})` }} />
 
                   <div className="nav-buttons">
 
@@ -103,7 +105,11 @@ export default function Banner({ data = [] }) {
               </div>
 
               <div className="featured-category">
-                <h1 className="index">{`${current_index+1}`}</h1>
+                <h1 className="index">
+                  {
+                    ("0" + (current_index+1)).slice(-2)
+                  }
+                </h1>
                 <div className="label">
                   {
                     ingredients.map(a =>

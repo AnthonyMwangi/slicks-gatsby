@@ -3,51 +3,36 @@ import React from 'react'
 import { Link } from 'components'
 import pizza_image from 'images/default_pizza.png'
 
-export default function Banners() {
+export default function Offers({ data = [] }) {
 
-  const data = [
-    {
-      color: '#FF1E1E',
-      title: 'Family Pack',
-      action: {
-        link: '/#menu',
-        title: 'Order Now'
-      },
-      caption: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis magni, ullam hic sint pariatur distinctio',
-      image: pizza_image
+  const offers = data.map(a => ({
+    ...a, action: {
+      link: '/#order',
+      title: 'Order Now'
     },
-    {
-      color: '#FCBA1C',
-      action: {
-        link: '/#menu',
-        title: 'Order Now'
-      },
-      title: 'Couples Pack',
-      caption: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis magni, ullam hic sint pariatur distinctio',
-      image: pizza_image
-    },
+  })).concat([
     {
       color: '#FC7D1C',
       action: {
-        link: '/#menu',
+        link: '/#footer',
         title: 'Contact Us'
       },
-      title: 'Custom Orders',
-      caption: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis magni, ullam hic sint pariatur distinctio',
-      image: pizza_image
+      name: 'Custom Orders',
+      description: 'For any queries, compliments, complaints or custom orders, you can reach out to us directly.',
+      images: [pizza_image]
     }
-  ];
+  ]);
 
   return (
     <section id='banners'>
       <div className='wrapper'>
         {
-          data.map((item, index) =>
-            <div key={`${index}`} className='banner' style={{backgroundColor: item.color}}>
-              <h1 className="title">{item.title}</h1>
-              <div className="caption">{item.caption}</div>
-              <Link className="btn" to={item.action.link} title={item.action.title}/>
-              <img src={item.image} alt={item.caption} className="image" />
+          offers.map((offer) =>
+            <div key={`${offer.id}`} className='banner' style={{ backgroundColor: offer.color }}>
+              <h1 className="title">{offer.name}</h1>
+              <div className="caption">{offer.description}</div>
+              <Link className="btn" to={offer.action.link} title={offer.action.title} />
+              <img src={offer.images[0]} alt={offer.name} className="image" />
             </div>
           )
         }

@@ -34,7 +34,6 @@ module.exports = {
       options: {
         projectId: `8ny66115`,
         dataset: `production`,
-        overlayDrafts: true,
         watchMode: true,
       },
     },

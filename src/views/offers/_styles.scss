@@ -1,11 +1,24 @@
 #banners {
+  background-size: 30rem;
+  background-color: var(--orange);
+  background-image: url(../../images/pattern.svg);
 
   .wrapper {
     display: grid;
     grid-template-columns: repeat(3,1fr);
+
+    > *:nth-child(3n-1):nth-last-of-type(1) {
+      grid-column: span 2;
+    }
+
+    > *:nth-child(3n-2):nth-last-of-type(1) {
+      grid-column: span 3;
+    }
+
   }
 
   .banner {
+    //width: 100%;
     display: flex;
     min-height: 16rem;
     overflow: hidden;
@@ -15,6 +28,10 @@
     align-items: flex-start;
     justify-content: center;
     color: var(--white);
+
+    &:last-child {
+      grid-column-end: -1;
+    }
 
     .title {
       font-size: 1.75rem;
