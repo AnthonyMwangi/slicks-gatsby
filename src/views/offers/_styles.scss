@@ -1,0 +1,58 @@
+#banners {
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .banner {
+    display: flex;
+    min-height: 16rem;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 2.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: var(--white);
+
+    .title {
+      font-size: 1.75rem;
+      letter-spacing: 0.05rem;
+    }
+
+    .caption {
+      line-height: 1.5;
+      margin: 1rem 0;
+      font-size: 1rem;
+      max-width: 70%;
+      max-height: 5rem;
+      overflow: hidden;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid var(--white);
+      &:hover {
+        color: var(--red);
+        background: var(--white);
+      }
+      &::before {
+        opacity: 1;
+        background: var(--white);
+      }
+    }
+
+    .image {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      margin-right: -8rem;
+      object-fit: contain;
+      position: absolute;
+    }
+
+  }
+
+}

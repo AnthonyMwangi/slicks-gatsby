@@ -1,22 +1,93 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import Banner from 'views/banner'
+import Menu from 'views/menu'
+import Offers from 'views/offers'
+import Masters from 'views/masters'
+import Instagram from 'views/instagram'
+import Orders from 'views/order'
+import Footer from 'views/footer'
+import { SEO, Layout } from "components"
+import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+export default function App({ data }) {
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+  const menu = data.menu.edges.map(({ node }) => ({
+    ...node,
+    image: node?.image?.asset?.fixed?.src ?? '',
+    ingredients: node.ingredients.map(a => a.name),
+  }))
 
-export default IndexPage
+  const masters = data.masters.edges.map(({ node }) => ({
+    ...node,
+    image: node?.image?.asset?.fixed?.src ?? '',
+    signature: node?.signature?.asset?.fixed?.src ?? '',
+  }))
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <Banner data={menu}/>
+      <Menu data={menu}/>
+      <Offers />
+      <Masters data={masters} />
+      <Orders data={menu} />
+      <Instagram />
+      <Footer />
+    </Layout>
+  )
+}
+
+
+export const query = graphql`
+{
+  menu: allSanityPizza {
+      edges {
+      node {
+        id
+        name
+        ingredients {
+          name
+        }
+        image {
+          asset {
+            fixed {
+              src
+            }
+          }
+        }
+        variants {
+          size
+          price
+        }
+      }
+    }
+  }
+  masters: allSanityMaster(sort: {
+    fields : _createdAt
+    order: ASC
+  }){
+    edges {
+      node {
+        id,
+        name,
+        description,
+        image {
+          asset {
+            fixed {
+              src
+            }
+          }
+        }
+        signature {
+          asset {
+            fixed {
+              src
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+`

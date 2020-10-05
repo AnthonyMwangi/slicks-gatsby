@@ -1,0 +1,148 @@
+#footer {
+  z-index: 1;
+  padding: 5rem 0;
+  position: relative;
+  background: darken(#FFF9F9,1);
+
+  .wrapper {
+    gap: 3rem;
+    width: 100%;
+    margin: auto;
+    display: grid;
+    max-width: 48rem;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    &.socials {
+      gap: 1.5rem;
+      margin-top: 4rem;
+      align-items: center;
+      grid-template-columns: 1fr auto 1fr;
+      &::before, &::after {
+        height: 1px;
+        content: '';
+        display: block;
+        border-top: 1px solid #FC7D1C;
+      }
+    }
+  }
+
+  .title {
+    font-size: 1.3rem;
+    color: var(--red);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05rem;
+  }
+
+  .contact-info {
+    text-align: center;
+    $grey: lighten(#7C7A7C,30);
+
+    .address {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--gray);
+      text-transform: capitalize;
+    }
+
+    .phone-no {
+      display: block;
+      margin: .5rem 0;
+      font-weight: 500;
+      font-size: .85rem;
+      color: var(--gray);
+      padding: .5rem 0rem;
+      letter-spacing: 0.03rem;
+      border-top: 1px solid $grey;
+      border-bottom: 1px solid $grey;
+      &:hover { color: var(--red) }
+    }
+
+    .email {
+      display: block;
+      font-weight: 500;
+      font-size: .8rem;
+      color: var(--red);
+      letter-spacing: 0.03rem;
+    }
+
+  }
+
+  .subscribe {
+    text-align: center;
+
+    input {
+      width: 100%;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--brown);
+      border-radius: 2rem;
+      padding: .5rem 1rem;
+      font-family: var(--normal);
+      border: 1px solid var(--gray);
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+  }
+
+  .socials-content {
+    gap: .75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .social-link {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      cursor: pointer;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      border: 1.5px dashed #FC7D1C;
+
+      .icon {
+        height: 1rem;
+        object-fit: contain;
+      }
+
+      &:hover {
+        background: #FC7D1C;
+        .icon { filter: brightness(0) invert(1) }
+      }
+
+    }
+  }
+
+  .legal {
+    display: flex;
+    font-size: .8rem;
+    font-weight: 500;
+    margin-top: 3.5rem;
+    align-items: center;
+    color: var(--gray);
+    justify-content: space-between;
+
+    .terms .link {
+      margin-left: 1rem;
+      color: var(--gray);
+      &:hover { color: var(--red) }
+    }
+
+    .copyright {
+
+      a { color: var(--red) }
+
+      .spacer { margin: 0 .25rem }
+
+    }
+
+
+
+  }
+
+}

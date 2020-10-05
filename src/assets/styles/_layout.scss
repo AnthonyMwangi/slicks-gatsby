@@ -5,12 +5,14 @@ html {
   box-sizing: border-box;
   overflow-y: scroll;
 }
+
 body {
   margin: 0;
+  font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
+  color: var(--text);
+  font-family: var(--regular);
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -19,6 +21,7 @@ body {
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
 }
+
 article,
 aside,
 details,
@@ -51,6 +54,8 @@ template {
   display: none;
 }
 a {
+  color: inherit;
+  text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
@@ -72,21 +77,14 @@ dfn {
   font-style: italic;
 }
 h1 {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin:0;
+  padding: 0;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-weight: 800;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
   line-height: 1.1;
+  font-family: var(--bold);
 }
 mark {
   background-color: #ff0;
@@ -111,14 +109,8 @@ sup {
 img {
   border-style: none;
   max-width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin: 0;
+  padding: 0;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -160,6 +152,8 @@ input,
 optgroup,
 select,
 textarea {
+  border: none;
+  outline: none;
   font: inherit;
   margin: 0;
 }
@@ -260,8 +254,7 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--bold);
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
@@ -277,8 +270,7 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--bold);
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
@@ -294,8 +286,7 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--bold);
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
@@ -311,8 +302,7 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--bold);
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
@@ -328,8 +318,7 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--bold);
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
@@ -590,6 +579,53 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+
+.bg-image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn {
+  cursor: pointer;
+  font-size: .9rem;
+  border-radius: 2rem;
+  display: inline-block;
+  color: var(--white);
+  padding: .5rem 1.5rem;
+  font-family: var(--bold);
+  letter-spacing: 0.03rem;
+  position: relative;
+  background-color: var(--red);
+  overflow: hidden;
+  z-index: 1;
+
+  .btn-text {
+    z-index: 2;
+  }
+
+  &:before {
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    z-index: -1;
+    content: '';
+    height: 100%;
+    position: absolute;
+    border-radius: 2rem;
+    transition: all .3s ease-in-out;
+    background-color: var(--brown);
+    opacity: .15;
+  }
+
+  &:hover {
+    &:before {
+      width: 100%;
+    }
+  }
+
+}
+
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;

@@ -1,0 +1,63 @@
+.app-logo {
+  width: auto;
+  height: auto;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  letter-spacing: 0.5px;
+  justify-content: center;
+  background: var(--red);
+  text-decoration: none;
+  padding: 0 .75rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  border-bottom-left-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+  --dark-shadow: rgba(0, 0, 0, 0.25) 0.12rem 0.1rem 0px;
+  --light-shadow: rgba(0, 0, 0, 0.15) 0.18rem 0.18rem 0px;
+
+  .wrapper {
+    color: var(--white);
+    font-family: 'Barlow';
+    text-transform: uppercase;
+    align-content: center;
+    > * { transition: all .15s linear }
+  }
+
+  .est {
+    font-size: .7rem;
+    font-weight: 700;
+    margin-bottom: .1rem;
+    letter-spacing: .1rem;
+    transform: rotate(-5deg) scale(1);
+    text-shadow: var(--light-shadow);
+  }
+
+  .slices {
+    font-size: .8rem;
+    font-weight: 700;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    letter-spacing: .2rem;
+    text-shadow: var(--light-shadow);
+    transform: rotate(-5deg) scale(1.1);
+  }
+
+  .slicks {
+    --red: #ED1D25;
+    margin: 0;
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+    font-family: var(--bold);
+    text-shadow: var(--dark-shadow);
+    transform: rotate(-10deg) scale(1.4);
+    -webkit-text-stroke: 1px var(--red);
+  }
+
+  &:hover {
+    .est { transform: rotate(-1deg) scale(1) }
+    .slicks { transform: rotate(0deg) scale(1.4) }
+    .slices { transform: rotate(1deg) scale(1.1) }
+  }
+
+}

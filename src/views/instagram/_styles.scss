@@ -1,0 +1,37 @@
+#instagram {
+  min-height: 10rem;
+  position: relative;
+  background-color: var(--brown);
+
+  &::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    display: block;
+    position: absolute;
+    background-size: 2.5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparentize(#282323,0.75);
+    background-image: url(../../images/instagram.png);
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .insta-post {
+    height: 15rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    .hidden {
+      visibility: hidden;
+    }
+  }
+
+}
