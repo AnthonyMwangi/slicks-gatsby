@@ -73,3 +73,42 @@
   }
 
 }
+
+@media only screen and (max-width: 720px) {
+  #banners {
+
+    .wrapper {
+      grid-template-columns: 1fr;
+
+      > *:nth-child(3n-1):nth-last-of-type(1) {
+        grid-column: 1;
+      }
+
+      > *:nth-child(3n-2):nth-last-of-type(1) {
+        grid-column: 1;
+      }
+
+    }
+
+    .banner {
+      padding: 1rem 1.25rem;
+
+      .title {
+        font-size: 1.5rem;
+        letter-spacing: 0.06rem;
+      }
+
+      .caption {
+        max-width: 60%;
+        max-height: none;
+      }
+
+      .image {
+        margin-right: -9rem;
+      }
+
+    }
+
+  }
+
+}

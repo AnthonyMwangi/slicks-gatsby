@@ -580,6 +580,17 @@ pre tt:after {
   content: "";
 }
 
+.noselect {
+  -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
 .bg-image {
   background-size: contain;
   background-repeat: no-repeat;
@@ -587,6 +598,7 @@ pre tt:after {
 }
 
 .btn {
+  @extend .noselect;
   cursor: pointer;
   font-size: .9rem;
   border-radius: 2rem;

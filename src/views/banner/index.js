@@ -1,9 +1,15 @@
 import './_styles.scss'
 import React from "react"
 import ribbon from 'images/ribbon.svg'
+import menu_open from 'images/menu.svg'
+import menu_close from 'images/close.svg'
 import { AppLogo, Link } from "components"
 
+const icons = { open: menu_close, closed: menu_open };
+
 export default function Banner({ data = [] }) {
+
+  const [menu_hidden, update_menu_visibility] = React.useState(true);
 
   const [current_index, update_index] = React.useState(0);
 
@@ -34,22 +40,27 @@ export default function Banner({ data = [] }) {
 
           <div className="navigation">
 
-            <div className='flex'>
+            <AppLogo />
 
-              <AppLogo />
+            <MenuIcon
+              state={`${!!menu_hidden ? 'closed' : 'open'}`}
+              onClick={()=>update_menu_visibility(!menu_hidden)}
+            />
 
-              <div className="flex nav-links">
+            <div className={`flex wrapper ${!!menu_hidden ? 'hidden' : 'visible'}`}>
+
+              <div className={`flex nav-links`}>
                 <Link className='link' to='/#home' title='Hot Now' />
                 <Link className='link' to='/#menu' title='Menu' />
                 <Link className='link' to='/#slicemasters' title='SliceMasters' />
                 <Link className='link' to='/#order' title='Order Ahead' />
               </div>
 
-            </div>
+              <div className="flex nav-contacts">
+                <a href='tel: +254 719 236 860' className="contact-us">+254 719 236 860</a>
+                <Link to='/#order' className="btn order-now" title='Order Online' />
+              </div>
 
-            <div className="flex nav-contacts">
-              <a href='tel: +254 719 236 860' className="contact-us">+254 719 236 860</a>
-              <Link to='/#order' className="btn order-now" title='Order Online' />
             </div>
 
           </div>
@@ -88,7 +99,7 @@ export default function Banner({ data = [] }) {
 
                   <div className='hero-image' style={{ backgroundImage: `url(${image})` }} />
 
-                  <div className="nav-buttons">
+                  <div className="nav-buttons noselect">
 
                     <button className="btn prev" onClick={() => navigate_menu(false)}>
                       <div className="icon">{'<'}</div>
@@ -132,5 +143,13 @@ export default function Banner({ data = [] }) {
       </div>
 
     </section>
+  )
+}
+
+function MenuIcon({ state='closed', onClick=()=>{} }) {
+  return (
+    <button className='menu-btn' onClick={onClick}>
+      <img src={icons[state]} alt="menu icon" className={`icon ${state}`}/>
+    </button>
   )
 }

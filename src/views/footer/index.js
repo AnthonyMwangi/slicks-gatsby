@@ -14,15 +14,22 @@ export default function Footer() {
         <ContactInfo
           location='Nairobi'
           phone='+254 719 236 860'
-          email='sales@slicks-slices.co.ke'
-          address='whitefield place, school lane, Westlands, Kenya'
+          email='sales@slicks-slices.com'
+          address='24th Woodvale Grove, Westlands, Kenya'
         />
 
         <ContactInfo
           location='New York'
           phone='+10 278 398 4327'
           email='sales@slicks-slices.com'
-          address='700/D 5th Ave, New York, NY 10028, United States'
+          address='700/D 5th Ave, New York, United States'
+        />
+
+        <ContactInfo
+          location='California'
+          phone='+10 278 398 4327'
+          email='sales@slicks-slices.com'
+          address='700/D 5th Ave, California, United States'
         />
 
         <div className="subscribe">
@@ -54,19 +61,20 @@ export default function Footer() {
         </div>
       </div>
       <div className="wrapper legal">
+
         <div className="copyright">
-          <span className="spacer"/>
           <span>&#169; 2020</span>
+          <a href='https://dribbble.com/uttom0094' target='blank'>&nbsp; UOS Design. </a>
+          <span className='break'>All Rights Reserved.</span>
           <span className="spacer"/>
-          <a href='https://dribbble.com/uttom0094' target='blank'>UOS Design. </a>
-          <span>All Rights Reserved.</span>
-          <span className="spacer"/>
-          <span>Powered By <a href="https://github.com/AnthonyMwangi" target='blank' className="link">Tony Mwangi</a></span>
+          <span className='break'>Powered By <a href="https://github.com/AnthonyMwangi" target='blank' className="link">Tony Mwangi</a></span>
         </div>
+
         <div className="terms">
           <Link to="/#home" className="link" title='Terms of Delivery'/>
           <Link to="/#home" className="link" title='Privacy Policy'/>
         </div>
+
       </div>
     </section>
   )

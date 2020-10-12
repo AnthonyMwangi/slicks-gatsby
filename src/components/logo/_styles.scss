@@ -1,4 +1,5 @@
 .app-logo {
+  z-index: 10;
   width: auto;
   height: auto;
   display: flex;
@@ -58,6 +59,34 @@
     .est { transform: rotate(-1deg) scale(1) }
     .slicks { transform: rotate(0deg) scale(1.4) }
     .slices { transform: rotate(1deg) scale(1.1) }
+  }
+
+}
+
+
+@media only screen and (max-width: 720px) {
+
+  .app-logo {
+    padding: .1rem .75rem;
+    border: 2px solid var(--white);
+    border-top: none;
+
+    .est {
+      font-size: .5rem;
+      margin-bottom: 0rem;
+    }
+
+    .slices {
+      font-size: .6rem;
+      margin-top: .1rem;
+      margin-bottom: .4rem;
+    }
+
+    .slicks {
+      font-size: .95rem;
+      margin-top: -0.15rem;
+    }
+
   }
 
 }

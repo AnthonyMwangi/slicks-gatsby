@@ -35,3 +35,45 @@
   }
 
 }
+
+@media only screen and (max-width: 720px) {
+  #instagram {
+
+    &::before {
+      background-color: transparentize(#282323,0.4);
+    }
+
+    .wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .insta-post {
+      height: 10rem;
+      &:last-child {
+        grid-column: 1/-1;
+      }
+    }
+
+  }
+}
+
+@media only screen and (min-width: 721px) and (max-width: 800px) {
+  #instagram {
+
+    &::before {
+      background-color: transparentize(#282323,0.4);
+    }
+
+    .wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .insta-post {
+      height: 10rem;
+      &:last-child {
+        grid-column: 2/-1;
+      }
+    }
+
+  }
+}

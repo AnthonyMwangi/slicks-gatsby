@@ -6,4 +6,7 @@ export { default as Layout } from './_layout'
 
 export { default as AppLogo } from './logo'
 
-export { default as Link } from './link'
+export {
+  default as Link,
+  handleMenuLinkClick as scrollToSection
+} from './link'

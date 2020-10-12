@@ -1,13 +1,12 @@
 import './_styles.scss'
 import React from 'react'
-import { Link } from 'components'
+import { scrollToSection } from 'components'
 import pizza_image from 'images/default_pizza.png'
 
-export default function Offers({ data = [] }) {
+export default function Offers({ data = [], onSelectOffer = () => { } }) {
 
   const offers = data.map(a => ({
     ...a, action: {
-      link: '/#order',
       title: 'Order Now'
     },
   })).concat([
@@ -23,16 +22,33 @@ export default function Offers({ data = [] }) {
     }
   ]);
 
+  const on_select_offer = (offer) => {
+
+    const { id, action } = offer;
+
+    if (!action.link) return onSelectOffer(id);
+
+    return scrollToSection(action.link,null);
+
+  }
+
   return (
     <section id='banners'>
       <div className='wrapper'>
         {
           offers.map((offer) =>
             <div key={`${offer.id}`} className='banner' style={{ backgroundColor: offer.color }}>
+
               <h1 className="title">{offer.name}</h1>
+
               <div className="caption">{offer.description}</div>
-              <Link className="btn" to={offer.action.link} title={offer.action.title} />
+
+              <button className="btn" onClick={() => on_select_offer(offer)}>
+                {offer.action.title}
+              </button>
+
               <img src={offer.images[0]} alt={offer.name} className="image" />
+
             </div>
           )
         }

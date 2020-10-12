@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import scrollToElement from 'scroll-to-element';
 
-export function scroller(target, offset) {
+function scroller(target, offset) {
   scrollToElement(target, {
     offset,
   });
@@ -12,8 +12,9 @@ export function handleMenuLinkClick(link, e) {
   if (typeof window !== 'undefined' && link.includes('#')) {
     const [anchorPath, anchor] = link.split('#');
     if (window.location.pathname === anchorPath) {
-      e.preventDefault();
-      scroller(`#${anchor}`, -20);
+      if (!!e) e.preventDefault();
+      const offset = !!e ? -20 : 0;
+      scroller(`#${anchor}`, offset);
     }
   }
 }
@@ -23,6 +24,8 @@ export default function CustomLink({ title = 'Broken Link', to = '/404/', classN
   const anchor = to.split('#')[1];
 
   const forcedActiveState = () => {
+
+    if (typeof window === `undefined`) return '';
 
     if (!anchor || window.location.hash !== `#${anchor}`) return '';
 
