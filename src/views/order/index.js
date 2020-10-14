@@ -17,14 +17,6 @@ export default function Order({ data = [], filter = '' }) {
 
   const [menu, update_menu] = React.useState([]);
 
-  React.useEffect(() => {
-
-    update_menu(data);
-
-    update_menu_filter(filter);
-
-  }, [data, filter]);
-
   const add_to_cart = (item, variants) => {
 
     update_menu_filter(null);
@@ -50,26 +42,6 @@ export default function Order({ data = [], filter = '' }) {
     const new_order = orders.filter(a => a.id !== id);
 
     return update_orders(new_order);
-
-  }
-
-  const update_menu_filter = (id) => {
-
-    if (!!errors) update_error(null);
-
-    document.querySelectorAll('.menu-item').forEach((item) => {
-      item.classList.remove('active');
-    });
-
-    if (!id || id === '' || id === menu_filter) return null;
-
-    const menu_item = document.getElementById(`menu-${id}`);
-
-    menu_item.classList.add('active');
-
-    menu_item.scrollIntoView();
-
-    return update_filter(id);
 
   }
 
@@ -112,6 +84,36 @@ export default function Order({ data = [], filter = '' }) {
     return update_form_state(null);
 
   }
+
+  const update_menu_filter = React.useCallback((id) => {
+
+    console.log('update_menu_filter :>> ', {id,menu_filter});
+
+    if (!!errors) update_error(null);
+
+    document.querySelectorAll('.menu-item').forEach((item) => {
+      item.classList.remove('active');
+    });
+
+    if (!id || id === '' || id === menu_filter) return null;
+
+    const menu_item = document.getElementById(`menu-${id}`);
+
+    menu_item.classList.add('active');
+
+    menu_item.scrollIntoView();
+
+    return update_filter(id);
+
+  }, [errors,menu_filter]);
+
+  React.useEffect(() => {
+
+    if (data!==menu) update_menu(data);
+
+    if (filter!==menu_filter) update_menu_filter(filter);
+
+  }, [data,menu,filter,menu_filter,update_menu_filter]);
 
   return (
     <section id='order'>

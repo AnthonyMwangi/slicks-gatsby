@@ -40,7 +40,7 @@ export default function Footer() {
 
       </div>
       <div className="wrapper socials">
-        <div className="socials-content">
+        <div className="socials-content noselect">
 
           <div className="social-link">
             <img src={facebook} alt='facebook icon' className="icon"/>
