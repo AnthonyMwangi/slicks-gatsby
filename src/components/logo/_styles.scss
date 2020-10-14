@@ -67,9 +67,15 @@
 @media only screen and (max-width: 720px) {
 
   .app-logo {
+    z-index: 21;
     padding: .1rem .75rem;
     border: 2px solid var(--white);
     border-top: none;
+
+    &.menu-open {
+      top: 0;
+      position: fixed;
+    }
 
     .est {
       font-size: .5rem;

@@ -40,7 +40,7 @@ export default function Banner({ data = [] }) {
 
           <div className="navigation">
 
-            <AppLogo />
+            <AppLogo menuState={`${!!menu_hidden ? 'closed' : 'open'}`}/>
 
             <MenuIcon
               state={`${!!menu_hidden ? 'closed' : 'open'}`}
@@ -148,8 +148,8 @@ export default function Banner({ data = [] }) {
 
 function MenuIcon({ state='closed', onClick=()=>{} }) {
   return (
-    <button className='menu-btn' onClick={onClick}>
-      <img src={icons[state]} alt="menu icon" className={`icon ${state}`}/>
+    <button className={`menu-btn menu-${state}`} onClick={onClick}>
+      <img src={icons[state]} alt="menu icon" className={`icon`}/>
     </button>
   )
 }

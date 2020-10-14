@@ -76,7 +76,7 @@ function SEO({ description, lang, meta, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``,
+  description: `Pizza Restaurant Shop Website`,
 }
 
 SEO.propTypes = {

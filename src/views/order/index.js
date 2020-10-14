@@ -27,6 +27,8 @@ export default function Order({ data = [], filter = '' }) {
 
   const add_to_cart = (item, variants) => {
 
+    update_menu_filter(null);
+
     if (!!errors) update_error(null);
 
     const { id, image, name } = item;
@@ -40,6 +42,8 @@ export default function Order({ data = [], filter = '' }) {
   }
 
   const remove_from_cart = (id) => {
+
+    update_menu_filter(null);
 
     if (!!errors) update_error(null);
 
